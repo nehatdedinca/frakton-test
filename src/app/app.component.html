@@ -1,20 +1,53 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<h1>Frontend Test (Frakton)</h1>
+<!-- Search by email -->
+<div class="container color-dark">
+  <div class="col">
+    <p>Search Users section</p>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Use the field below to search a particular user based on their email.</p>
+    <form>
+      <input type="text" class="txt" name="email" (keyup)="onNameKeyUp($event)" placeholder="Type email..."/>
+      <input type="button" class="btn" [value]="btnSearchUser" (click)="getUserProfile()"/>
+    </form>
+  </div>
+  <div class="col" *ngIf="userFound">
+    <p class="life-container">
+      <span>User found! <strong>{{ name }}'s</strong> detail are as follow:<br/><br/>
+      Phone number: {{ phoneNumber }}<br/>
+      E-mail: {{ email }}<br/>
+      City: {{ city }}<br/>
+      Company Name: {{ companyName }}<br/>
+      Website: {{ website }}
+      </span>
+    <p>
+  </div>
+  <div class="col" *ngIf="!userFound">
+    <p class="life-container">
+      <span><strong>Woupsssey!</strong> Try typing correct email! :/</span>
+    <p>
+  </div>
+</div>
+<br/>
+<br/>
+<!-- Display all users sorted by the name attribute -->
+<div class="container color-dark">
+  <div class="col">
+    <p>Display all users</p>
+  </div>
+</div>
+<div class="container color-light" >
+  <div class="col" *ngFor="let user of users">
+    <p class="life-container" >
+      <span><strong>{{ user.name }}'s</strong> detail are as follow:<br/><br/>
+      Phone number: {{ user.phone }}<br/>
+      E-mail: {{ user.email }}<br/>
+      City: {{ user.address.city }}<br/>
+      Company Name: {{ user.company.name }}<br/>
+      Website: {{ user.website }}
+      </span>
+    <p>
+  </div>
+</div>
